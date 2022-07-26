@@ -10,8 +10,7 @@ import time
 #records.insert_one({'name': f'{name}'})
 
 def update_teams():
-    client = pymongo.MongoClient(
-        "mongodb://users:usersall@megglis-shard-00-00.oz019.mongodb.net:27017,megglis-shard-00-01.oz019.mongodb.net:27017,megglis-shard-00-02.oz019.mongodb.net:27017/Teams_db?ssl=true&replicaSet=atlas-zb6fyo-shard-0&authSource=admin&retryWrites=true&w=majority")
+    client = pymongo.MongoClient( {your pymongo link to your database with write privileges} )
     db = client.get_database('Teams_db')
     records = db.Teams_records
     url = "https://www.basketball-reference.com/leagues/NBA_2022.html"
@@ -51,8 +50,7 @@ def update_teams():
 
 #update players stats
 def fill_players(url, threecharacter, update):
-    client = pymongo.MongoClient(
-        "mongodb://users:usersall@megglis-shard-00-00.oz019.mongodb.net:27017,megglis-shard-00-01.oz019.mongodb.net:27017,megglis-shard-00-02.oz019.mongodb.net:27017/Players_db?ssl=true&replicaSet=atlas-zb6fyo-shard-0&authSource=admin&retryWrites=true&w=majority")
+    client = pymongo.MongoClient( {your pymongo link to your database with write privileges} )
     db = client.get_database('Players_db')
     records = db.Player
     req = urllib.request.Request(url=url)
